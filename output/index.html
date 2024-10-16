@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CybeGloss - Your Cybersecurity Glossary</title>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    
+</head>
+<body>
+    <header>
+    <div class="logo"><a href="/"><img src="https://examplecompany.com/images/logo.svg" /></a></div>
+    <nav>
+        <a href="https://examplecompany.com/">Home</a>
+    </nav>
+    <a class="grow-btn" href="https://examplecompany.com/auth">Get Started</a>
+</header>
+    <main class="homeMain">
+        <h1>CyberSecurity Glossary</h1>
+        <p>A comprehensive resource for cybersecurity definitions and concepts.</p>
+
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search for terms...">
+            <div id="search-results"></div>
+        </div>
+
+        <div id="content">
+            
+                <nav class="alphabet-nav">
+                    
+                        <a href="#category-H">H</a>
+                    
+                        <a href="#category-T">T</a>
+                    
+                </nav>
+
+                
+                    <div id="category-H" class="category-section">
+                        <h2>H</h2>
+                        <ul>
+                            
+                                <li><a href="/how-to-use-video-marketing-for-seo-in-virtual-reality-fitness/">How to Use Video Marketing for SEO in Virtual Reality Fitness</a></li>
+                            
+                        </ul>
+                    </div>
+                
+                    <div id="category-T" class="category-section">
+                        <h2>T</h2>
+                        <ul>
+                            
+                                <li><a href="/top-10-cybersecurity-threat-prevention-strategies-for-virtual-reality-fitness-classes/">Top 10 Cybersecurity Threat Prevention Strategies for Virtual Reality Fitness Classes</a></li>
+                            
+                                <li><a href="/the-impact-of-mobile-optimization-on-seo-performance-for-vr-fitness-apps/">The Impact of Mobile Optimization on SEO Performance for VR Fitness Apps</a></li>
+                            
+                        </ul>
+                    </div>
+                
+            
+    </div>
+    </main>
+    <footer>
+    <div class="logo">
+        <a href="/">
+            <img src="https://examplecompany.com/images/logo.svg" alt="{{ProjectName}} Logo" />
+        </a>
+    </div>
+    <div class="footer-content">
+        <div class="copyright">
+            © Copyright 2022 - 2023 company.
+        </div>
+        <nav class="footer-nav">
+            <a href="https://examplecompany.com/">Home</a>
+            
+                
+                    <a href="https://twitter.com/examplecompany" target="_blank" rel="noopener noreferrer">
+                        Twitter
+                    </a>
+                
+                    <a href="https://www.linkedin.com/company/examplecompany" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
+                
+                    <a href="https://www.instagram.com/example_company/" target="_blank" rel="noopener noreferrer">
+                        Instagram
+                    </a>
+                
+            
+        </nav>
+    </div>
+</footer>
+    <script>
+        // Prepare data for Fuse.js
+        const searchData = [
+            
+                
+                    {
+                        title: 'How to Use Video Marketing for SEO in Virtual Reality Fitness',
+                        category: 'H',
+                        url: '/how-to-use-video-marketing-for-seo-in-virtual-reality-fitness/',
+                        content: 'Strategies for leveraging video content to enhance search engine visibility and engagement in the realm of virtual reality fitness classes.'
+                    },
+                
+            
+                
+                    {
+                        title: 'Top 10 Cybersecurity Threat Prevention Strategies for Virtual Reality Fitness Classes',
+                        category: 'T',
+                        url: '/top-10-cybersecurity-threat-prevention-strategies-for-virtual-reality-fitness-classes/',
+                        content: 'A set of best practices aimed at safeguarding virtual reality (VR) fitness classes from various cybersecurity threats.'
+                    },
+                
+                    {
+                        title: 'The Impact of Mobile Optimization on SEO Performance for VR Fitness Apps',
+                        category: 'T',
+                        url: '/the-impact-of-mobile-optimization-on-seo-performance-for-vr-fitness-apps/',
+                        content: 'The influence that optimizing mobile user experiences has on the search engine visibility and ranking of virtual reality fitness applications.'
+                    },
+                
+            
+        ];
+
+        // Initialize Fuse with the search data
+        const fuse = new Fuse(searchData, {
+            keys: ['title', 'category', 'content'],
+            threshold: 0.3,
+            includeScore: true
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const content = document.getElementById('content');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value;
+            if (query.length > 2) {
+                const results = fuse.search(query);
+                displayResults(results);
+            } else {
+                searchResults.innerHTML = '';
+                content.style.display = 'block';
+            }
+        });
+
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<p>No results found.</p>';
+                content.style.display = 'none';
+                return;
+            }
+
+            let html = '<ul>';
+            results.forEach(result => {
+                html += `<li><a href="${result.item.url}">${result.item.title}</a> (${result.item.category})</li>`;
+            });
+            html += '</ul>';
+
+            searchResults.innerHTML = html;
+            content.style.display = 'none';
+        }
+
+        // Smooth scrolling for alphabet navigation
+        document.querySelectorAll('.alphabet-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
